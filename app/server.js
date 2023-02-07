@@ -38,7 +38,7 @@ let databaseName = "my-db";
 app.post('/update-profile', function (req, res) {
   let userObj = req.body;
 
-  MongoClient.connect("mongodb://admin:password@mongodb", function (err, client) {
+  MongoClient.connect("mongodb://admin:password@localhost:27017", function (err, client) {
     if (err) throw err;
 
     let db = client.db('my-db');
@@ -60,7 +60,7 @@ app.post('/update-profile', function (req, res) {
 app.get('/get-profile', function (req, res) {
   let response = {};
   // Connect to the db
-  MongoClient.connect("mongodb://admin:password@mongodb", function (err, client) {
+  MongoClient.connect("mongodb://admin:password@localhost:27017", function (err, client) {
     if (err) throw err;
 
     let db = client.db('my-db');
