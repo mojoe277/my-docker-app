@@ -37,5 +37,5 @@ jobs:
         ECR_REPOSITORY: docker-github
         IMAGE_TAG: app 1.0
       run: |
-        docker build -f Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
