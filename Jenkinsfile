@@ -10,7 +10,7 @@ pipeline {
         stage('build') {
             steps {
                     echo "Building the application..."
-                    exho "building version ${NEW_VERSION}"
+                    echo "building version ${NEW_VERSION}"
             }
         }
         stage('test') {
