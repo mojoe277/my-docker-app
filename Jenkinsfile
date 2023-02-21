@@ -13,8 +13,10 @@ pipeline {
             }
         }
         stage('test') {
-            steps {
-                    echo "Testing the application..."
+            
+            when {
+                expression {
+                    params.executeTests
                 }
             }
         stage('deploy') {
