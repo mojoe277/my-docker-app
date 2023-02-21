@@ -9,27 +9,20 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                script {
                     echo "Building the application..."
                     exho "building version ${NEW_VERSION}"
-                }
             }
         }
         stage('test') {
             steps {
-                script {
                     echo "Testing the application..."
                 }
             }
-        }
         stage('deploy') {
             steps {
-                script {
                     echo "Deploying the application..." 
                     echo "deploying version ${params.VERSION}"
                 }
-            }
         }
     }
 }
-
