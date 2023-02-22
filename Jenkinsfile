@@ -5,7 +5,7 @@ def gv
 pipeline {
     agent any
     tools {
-        NodeJS 'my-nodejs'
+        nodejs 'my-nodejs'
     }
     stages {
         stage("init") {
