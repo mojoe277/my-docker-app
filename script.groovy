@@ -1,6 +1,7 @@
 def build() {
     echo "building the application..."
     sh 'npm install'
+    sh 'npm run build' 
 } 
 
 def buildImage() {
