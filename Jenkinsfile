@@ -27,11 +27,7 @@ pipeline {
             }
             steps {
                 script {
-<<<<<<< HEAD
-                    gv.buildI()
-=======
                     gv.build()
->>>>>>> 8fe421475d1ec78fdbfafc60b50da8876533f33b
                 }
             }
         }
