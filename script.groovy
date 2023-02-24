@@ -4,12 +4,12 @@ def test() {
 } 
 
 def build() {
-    echo "building the application..."
+    echo "Building the application..."
  
 } 
 
 def deployApp() {
-    echo 'deploying the application...'
+    echo 'Deploying the application...'
 } 
 
 return this
