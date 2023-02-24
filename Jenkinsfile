@@ -4,6 +4,9 @@ def gv
 
 pipeline {
     agent any
+    tools {
+        nodejs 'my-nodejs'
+    }
     stages {
         stage("init") {
             steps {
@@ -12,31 +15,21 @@ pipeline {
                 }
             }
         }
-        stage("test") {
-            steps {
-                script {
-                    gv.test()
-                }
-            }
-        }
         stage("build") {
-            when {
-                expression {
-                   BRANCH_NAME == 'master' 
-                }
-            }
             steps {
                 script {
                     gv.build()
                 }
             }
         }
-        stage("deploy") {
-             when {
-                expression {
-                   BRANCH_NAME == 'master' 
+        stage("build image") {
+            steps {
+                script {
+                    gv.buildImage()
                 }
             }
+        }
+        stage("deploy") {
             steps {
                 script {
                     gv.deployApp()
