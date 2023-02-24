@@ -1,19 +1,23 @@
-def build() {
-    echo "building the application..."
-    sh 'npm install' 
+def test() {
+    echo "Testing the application..."
+    echo "Executing pipeline for branch $BRANCH_NAME"
 } 
 
-def buildImage() {
-    echo "building the docker image..."
-    withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-        sh 'docker build -t mojoe277/nodejs-app:njs-2.0 .'
-        sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh 'docker push mojoe277/nodejs-app:njs-2.0'
-    }
+def build() {
+    when {
+        expression 
+           BRANCH_NAME == 'master' 
+        }
+            echo "building the application..."
+ 
 } 
 
 def deployApp() {
-    echo 'deploying the application...'
+    when {
+        expression 
+           BRANCH_NAME == 'master' 
+        }
+            echo 'deploying the application...'
 } 
 
 return this
