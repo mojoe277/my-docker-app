@@ -1,5 +1,14 @@
 #!/usr/bin/env groovy
 
+library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
+        [$class: 'GitSCMSource',
+         remote: 'https://gitlab.com/nanuchi/jenkins-shared-library.git',
+         credentialsId: 'github-credentials'
+        ]
+)
+
+
+
 def gv
 
 pipeline {
@@ -18,14 +27,16 @@ pipeline {
         stage("build") {
             steps {
                 script {
-                    gv.build()
+                    build()
                 }
             }
         }
-        stage("build image") {
+        stage("build and push image") {
             steps {
                 script {
-                    gv.buildImage()
+                    buildImage 'mojoe277/nodejs-app:njs-3.0'
+                    dockerLogin()
+                    dockerPush 'mojoe277/nodejs-app:njs-3.0'
                 }
             }
         }
