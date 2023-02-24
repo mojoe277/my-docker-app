@@ -4,20 +4,12 @@ def test() {
 } 
 
 def build() {
-    when {
-        expression 
-           BRANCH_NAME == 'master' 
-        }
-            echo "building the application..."
+    echo "building the application..."
  
 } 
 
 def deployApp() {
-    when {
-        expression 
-           BRANCH_NAME == 'master' 
-        }
-            echo 'deploying the application...'
+    echo 'deploying the application...'
 } 
 
 return this

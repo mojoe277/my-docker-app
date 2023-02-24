@@ -3,9 +3,7 @@
 def gv
 
 pipeline {
-    tools {
-        nodejs 'my-nodejs'
-    }
+    agent any
     stages {
         stage("init") {
             steps {
@@ -22,6 +20,10 @@ pipeline {
             }
         }
         stage("build") {
+            when {
+                expression 
+                   BRANCH_NAME == 'master' 
+        }
             steps {
                 script {
                     gv.buildImage()
@@ -29,6 +31,9 @@ pipeline {
             }
         }
         stage("deploy") {
+            when {
+                expression 
+                   BRANCH_NAME == 'master'
             steps {
                 script {
                     gv.deployApp()
