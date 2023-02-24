@@ -3,10 +3,7 @@
 def gv
 
 pipeline {
-    agent any
-    tools {
-        nodejs 'my-nodejs'
-    }
+    agent none
     stages {
         stage("init") {
             steps {
@@ -15,14 +12,14 @@ pipeline {
                 }
             }
         }
-        stage("build") {
+        stage("test") {
             steps {
                 script {
-                    gv.build()
+                    gv.test()
                 }
             }
         }
-        stage("build image") {
+        stage("build") {
             steps {
                 script {
                     gv.buildImage()
