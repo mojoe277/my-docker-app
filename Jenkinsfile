@@ -3,7 +3,9 @@
 def gv
 
 pipeline {
-    agent none
+    tools {
+        nodejs 'my-nodejs'
+    }
     stages {
         stage("init") {
             steps {
