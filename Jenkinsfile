@@ -31,12 +31,10 @@ pipeline {
                 }
             }
         }
-        stage("build and push image") {
+        stage("build image") {
             steps {
                 script {
                     buildImage 'mojoe277/nodejs-app:njs-3.0'
-                    dockerLogin()
-                    dockerPush 'mojoe277/nodejs-app:njs-3.0'
                 }
             }
         }
